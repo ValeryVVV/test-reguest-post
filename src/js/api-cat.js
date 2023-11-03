@@ -18,6 +18,15 @@ function fetchBreeds() {
     });
 }
 
-console.log(fetchBreeds());
+function fetchCatByBreed(breedId) {
+  return instance
+    .get(`/images/search?breed_ids=${breedId}`)
+    .then(resp => resp.data[0])
+    .catch(error => {
+      throw new Error(error.response.statusText);
+    });
+}
 
-export { fetchBreeds };
+console.log(fetchCatByBreed());
+
+export { fetchBreeds, fetchCatByBreed };
